@@ -1,0 +1,38 @@
+[
+  {
+    "id_pengguna": 1,
+    "nama": "Samsul Aripin",
+    "email": "sam.arp201019@gmail.com",
+    "alamat": "Alas pandan pakuniran Probolinggo Jawa timur Indonesia"
+  },
+  {
+    "id_pengguna": 2,
+    "nama": "M. Hafidurrohman",
+    "email": "deifah126@gmail.com",
+    "alamat": "Probolinggo Jawa Timur"
+  },
+  {
+    "id_pengguna": 10,
+    "nama": "Avin",
+    "email": "hafid@gmail.com",
+    "alamat": "probolinggo"
+  },
+  {
+    "id_pengguna": 3,
+    "nama": "Aldi",
+    "email": "hafid@gmail.com",
+    "alamat": "probolinggo"
+  },
+  {
+    "id_pengguna": 4,
+    "nama": "Rizal",
+    "email": "hafid@gmail.com",
+    "alamat": "probolinggo"
+  },
+  {
+    "id_pengguna": 7,
+    "nama": "Sibli",
+    "email": "sibli@gmail.com",
+    "alamat": "probolinggo"
+  }
+]
