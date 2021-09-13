@@ -24,13 +24,13 @@ app.post('/post', (req, res) => {
         email,
         alamat
     })  
+    // console.log(ini);
     fs.writeFile('./ini.json', JSON.stringify(ini, null, 2), () => {
         console.log('Success add data');
     })  
-    res.send({
-        statusCode: '201',
+    res.status(201).json({
         status: 'success',
-        message: 'success add data'
+        message: 'Success add data'
     })
 })
 
@@ -39,21 +39,37 @@ app.patch('/patch', (req, res) => {
     res.send('Ini halaman patch')
 })
 
-app.put('/put', (req, res) => {
-    res.send('Ini adalah halaman PUT')
-})
+// app.put('/put/:id', (req, res) => {
+//     let data = ini[req.params.id - 1]
+//     data = JSON.stringify({
+//         nama: (req.body.nama === undefined) ? JSON.parse(data) : req.body.nama,  
+//         email: (req.body.email === undefined) ? JSON.parse(data) : req.body.email,  
+//         alamat: (req.body.alamat === undefined) ? JSON.parse(data) : req.body.alamat  
+//     })
+//     // console.log(JSON.parse(data));
+//     fs.writeFile('./ini.json', JSON.stringify(data, null, 2), () => {
+//         console.log('Success edit data');
+//     })
+//     res.status(200).json({
+//         status: 'success',
+//         message: 'Success edit data'
+//     })
+// })
 
 app.delete('/delete/:id', (req, res) => {
-    if (ini === id) {
-        
-    }
-    fs.readFile('./ini.json', JSON.stringify(ini, null, 2), () => {
+    if (!req?.params?.id || req?.params?.id > ini.length) {
+        return res.status(404).json({
+            status: 'error',
+            message: 'Not found'
+        })
+    } 
+    ini.splice(req.params.id -1, 1)
+    fs.writeFile('./ini.json', JSON.stringify(ini, null, 2), () => {
         console.log('Success delete data');
     })
-    res.send({
-        statusCode: '200',
+    res.status(200).json({
         status: 'success',
-        message: 'delete'
+        message: 'Success delete data'
     })
 })
 
