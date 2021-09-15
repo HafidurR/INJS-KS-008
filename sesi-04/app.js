@@ -12,7 +12,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/:id', (req, res) => {
-    res.send(ini[req.params.id - 1])
+    const data = ini.filter((b) => b.id_pengguna == req.params.id)[0];
+    res.send(data)
 })
 
 app.post('/post', (req, res) => {
@@ -39,31 +40,32 @@ app.patch('/patch', (req, res) => {
     res.send('Ini halaman patch')
 })
 
-// app.put('/put/:id', (req, res) => {
-//     let data = ini[req.params.id - 1]
-//     data = JSON.stringify({
-//         nama: (req.body.nama === undefined) ? JSON.parse(data) : req.body.nama,  
-//         email: (req.body.email === undefined) ? JSON.parse(data) : req.body.email,  
-//         alamat: (req.body.alamat === undefined) ? JSON.parse(data) : req.body.alamat  
-//     })
-//     // console.log(JSON.parse(data));
-//     fs.writeFile('./ini.json', JSON.stringify(data, null, 2), () => {
-//         console.log('Success edit data');
-//     })
-//     res.status(200).json({
-//         status: 'success',
-//         message: 'Success edit data'
-//     })
-// })
+app.put('/put/:id', (req, res) => {
+    let data = [ini[req.params.id - 1]]
+    data = ({
+        id_pengguna: req.body.id_pengguna === undefined ? data.id_pengguna : req.body.id_pengguna,
+        nama: req.body.nama === undefined ? data.nama : req.body.nama,  
+        email: req.body.email === undefined ? data.email : req.body.email,  
+        alamat: req.body.alamat === undefined ? data.alamat : req.body.alamat  
+    })
+    //console.log(JSON.parse(data));
+    fs.writeFile('./ini.json', JSON.stringify(data, null, 2), () => {
+        console.log('Success edit data');
+    })
+    res.status(200).json({
+        status: 'success',
+        message: 'Success edit data'
+    })
+})
 
 app.delete('/delete/:id', (req, res) => {
-    if (!req?.params?.id || req?.params?.id > ini.length) {
+    if (!req.params.id || req.params.id > ini.length) {
         return res.status(404).json({
             status: 'error',
             message: 'Not found'
         })
     } 
-    ini.splice(req.params.id -1, 1)
+    ini.splice(req.params.id, 1)
     fs.writeFile('./ini.json', JSON.stringify(ini, null, 2), () => {
         console.log('Success delete data');
     })
@@ -74,5 +76,5 @@ app.delete('/delete/:id', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`listening on http://localhost${port}`);
+    console.log(`listening on http://localhost:${port}`);
 })
