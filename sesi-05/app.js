@@ -5,9 +5,9 @@ const port = 5000
 app.use(express.static("public"))
 
 
-app.get('/pertama', (req, res) => {
-    res.send('./public')
-})
+// app.get('/gambar', (req, res) => {
+//     res.sendFile('./public/gambar.jpg', {root : __dirname})
+// })
 
 app.get('/pertama', (req, res) => {
     res.sendFile('./public/index.html', {root : __dirname})

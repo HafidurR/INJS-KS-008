@@ -1,0 +1,20 @@
+[
+  {
+    "id_pengguna": 1,
+    "nama": "Wahyu",
+    "email": "yolan@gmail.com",
+    "alamat": "Lampung"
+  },
+  {
+    "id_pengguna": 2,
+    "nama": "M. Hafidurrohman",
+    "email": "hafid@gmail.com",
+    "alamat": "paiton"
+  },
+  {
+    "id_pengguna": 3,
+    "nama": "M. Nurul",
+    "email": "hafid@gmail.com",
+    "alamat": "paiton"
+  }
+]
