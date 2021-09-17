@@ -17,14 +17,9 @@ app.get('/:id', (req, res) => {
 })
 
 app.post('/post', (req, res) => {
-    const { id_pengguna, nama, email, alamat} = req.body
-     
-    ini.push({
-        id_pengguna,
-        nama,
-        email,
-        alamat
-    })  
+    const all = { id_pengguna, nama, email, alamat} = req.body
+
+    ini.push(all)  
     // console.log(ini);
     fs.writeFile('./ini.json', JSON.stringify(ini, null, 2), () => {
         console.log('Success add data');
@@ -41,15 +36,17 @@ app.patch('/patch', (req, res) => {
 })
 
 app.put('/put/:id', (req, res) => {
-    let data = [ini[req.params.id - 1]]
-    data = ({
-        id_pengguna: req.body.id_pengguna === undefined ? data.id_pengguna : req.body.id_pengguna,
-        nama: req.body.nama === undefined ? data.nama : req.body.nama,  
-        email: req.body.email === undefined ? data.email : req.body.email,  
-        alamat: req.body.alamat === undefined ? data.alamat : req.body.alamat  
-    })
-    //console.log(JSON.parse(data));
-    fs.writeFile('./ini.json', JSON.stringify(data, null, 2), () => {
+    const {nama, email, alamat} = req.body
+    const data = ini.findIndex((b) => b.id_pengguna == req.params.id);
+    ini[data] = { ...ini[data], nama, email, alamat}
+    //console.log(ini[data]);
+    if (data < 0 ) {
+        return res.status(404).json({
+            status: 'error',
+            message: 'Not found'
+        })
+    }
+    fs.writeFile('./ini.json', JSON.stringify(ini, null, 2), () => {
         console.log('Success edit data');
     })
     res.status(200).json({
@@ -59,13 +56,15 @@ app.put('/put/:id', (req, res) => {
 })
 
 app.delete('/delete/:id', (req, res) => {
-    if (!req.params.id || req.params.id > ini.length) {
-        return res.status(404).json({
+    const data = ini.findIndex((b) => b.id_pengguna == req.params.id);
+    //console.log(data);
+    if (data < 0) {
+        res.status(404).json({
             status: 'error',
             message: 'Not found'
         })
-    } 
-    ini.splice(req.params.id, 1)
+    }
+    ini.splice(data,  1)
     fs.writeFile('./ini.json', JSON.stringify(ini, null, 2), () => {
         console.log('Success delete data');
     })
@@ -76,5 +75,5 @@ app.delete('/delete/:id', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`listening on http://localhost:${port}`);
+    console.log(`listening on http://localhost:${port}`); 
 })
