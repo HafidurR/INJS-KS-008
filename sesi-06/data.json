@@ -13,8 +13,20 @@
   },
   {
     "id_pengguna": 3,
-    "nama": "M. Nurul",
-    "email": "hafid@gmail.com",
-    "alamat": "paiton"
+    "nama": "Samsul",
+    "email": "nurroinz@gmail.com",
+    "alamat": "JABUNGSISIR"
+  },
+  {
+    "id_pengguna": 4,
+    "nama": "SIblil Aula",
+    "email": "rike_cinderrella@ymail.com",
+    "alamat": "JABUNGSISIR"
+  },
+  {
+    "id_pengguna": 5,
+    "nama": "Andi",
+    "email": "1821400094",
+    "alamat": "PODOKKELOR"
   }
 ]
