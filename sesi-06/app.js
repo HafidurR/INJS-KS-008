@@ -28,7 +28,7 @@ app.get('/:id', (req, res) => {
     res.send(find) 
 })
 
-app.post('/create', (req, res) => {
+app.post('/add', (req, res) => {
     //console.log(req.body)
     let ex = {
       id_pengguna: data.length,
