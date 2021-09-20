@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express with EJS</title>
+</head>
+<body>
+    <h1>Biodata : </h1>
+    <form action="/create" method="post">
+        <p>Nama</p>
+        <input type="text" name="nama">
+        <p>Email</p>
+        <input type="text" name="email">
+        <p>Alamat</p>
+        <input type="text" name="alamat"><br><br>
+        <button type="submit">Add Person</button>
+      </form><br>
+      <form method="GET">
+        <input type="text" name="nama">
+        <button type="submit">Cari</button>
+      </form><br>
+
+    <table border="2">
+      <tr>
+        <th>ID</th>
+        <th>Nama</th>
+        <th>Email</th>
+        <th>Alamat</th>
+      </tr>
+      <% data.forEach(item => { %>
+        <tr>
+          <td><%= item.id_pengguna%></td>
+          <td><%= item.nama%></td>
+          <td><%= item.email%></td>
+          <td><%= item.alamat%></td>
+        </tr>
+      <% }) %>
+    </table>
+</body>
+</html>
