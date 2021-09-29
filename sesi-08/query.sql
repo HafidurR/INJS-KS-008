@@ -14,7 +14,7 @@ create table mahasiswa(
 	birthdate date not null,
  	address text not null,
 	isActive boolean,
-	id_jurusan integer references jurusan(id_jurusan)
+	id_jurusan integer references jurusan(id_jurusan) -- membuat relasi dengan table jurusan sebagai fk(foreign key)
 );
 
 insert into mahasiswa(name, age, birthdate, address, isActive, id_jurusan)
