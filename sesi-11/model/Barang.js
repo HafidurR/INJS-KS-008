@@ -6,12 +6,13 @@ class Barang {
             name, kategory, harga
         } = req.body
 
+        //return res.json(name)
         db.query(`insert into barang (name, kategory, harga) values ('${name}', '${kategory}', '${harga}') `,
             (err, result) => {
                 if(err) {
                     return res.status(400).json({
                         status: 'error',
-                        message: err.message,
+                        message: err.message
                     })
                 } else {
                     return res.status(201).json({
@@ -34,7 +35,13 @@ class Barang {
                 return res.status(200).json({
                     status : 'success',
                     message: 'success get all data',
-                    data: result.rows
+                    data: result.rows.map(dt => {
+                        return {
+                            name: dt.name.toString().trim(),
+                            kategory: dt.kategory,
+                            harga: dt.harga
+                        }
+                    })
                 })
             }
         })
@@ -42,10 +49,10 @@ class Barang {
     static read_id (req, res) {
         const id = req.params.id;
         db.query(`select * from barang where id=${id};`, (err, result) => {
-            if(result === null) {
-                return res.status(404).json({
+            if(err) {
+                return res.status(400).json({
                     status: 'error',
-                    message: 'data not found'
+                    message: err.message
                 })
             } else {
                 return res.status(200).json({
@@ -63,7 +70,7 @@ class Barang {
         } = req.body
 
         db.query(`update barang 
-                set name='"+${name}+"'
+                set name='${name}',kategory='${kategory}',harga='${harga}'
                 where id=${id}`,
             (err, result) => {
                 //return console.log(err);
