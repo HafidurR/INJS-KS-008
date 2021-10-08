@@ -1,4 +1,5 @@
-create table guru(
+-- membuat table guru
+create table guru( 
 	id_guru serial primary key,
 	nig integer,
 	nama char(25),
@@ -8,11 +9,15 @@ create table guru(
 	no_telp varchar
 );
 
+-- input data ke table guru
 insert into guru(nig, nama, gender, tgl_lahir, alamat, no_telp)
 values (876997, 'Kamil Malik', 'pria', '2001-09-21', 'Jl. Raya Kraksaan No.35', '087716256509');
 
+-- membaca data dari table guru
 select * from guru;
+-- menambah 1 coloum baru di table guru
 alter table guru add column age integer;
+-- mengahpus table guru
 drop table guru;
 
 create table kelas(
