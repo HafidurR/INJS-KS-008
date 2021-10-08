@@ -19,7 +19,7 @@ module.exports = (sequelize, Datatypes) => {
             type: Datatypes.INTEGER,
             allowNull: false
           },
-          birthadate: {
+          birthdate: {
             type: Datatypes.DATE,
             allowNull: false
           },
@@ -33,5 +33,8 @@ module.exports = (sequelize, Datatypes) => {
             type: Datatypes.DATE,
             allowNull: false
           }
+    }, {
+      tableName: 'Admin'
     })
+    return Admin;
 }
