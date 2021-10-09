@@ -4,6 +4,7 @@
     "password": "postgresql",
     "database": "h8",
     "host": "localhost",
+    "port": 5433,
     "dialect": "postgres"
   },
   "test": {
