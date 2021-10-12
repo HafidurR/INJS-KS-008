@@ -72,6 +72,17 @@ app.post('/admin',  async (req, res) => {
     })
 })
 
+app.put('/admin/:id', async (req, res) => {
+    const id = req.params.id;
+    const {
+        name, gender, age, birthdate
+    } = req.body;
+
+    await Admin.update({
+        name, gender, age, birthdate
+    }).then()
+})
+
 app.delete('/admin/:id', async (req, res) => {
     const id = req.params.id
 

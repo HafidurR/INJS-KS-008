@@ -35,7 +35,7 @@ create table siswa(
 	tgl_lahir date,
 	alamat text,
 	no_telp varchar,
-	id_kelas integer references kelas(id_kelas) on delete cascade
+	id_kelas integer references kelas(id_kelas) on delete cascade --membuat relasi pada table kelas
 );
 
 insert into siswa(nisn, nama, gender, tgl_lahir, alamat, no_telp, id_kelas)
