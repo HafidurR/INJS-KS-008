@@ -80,7 +80,26 @@ app.put('/admin/:id', async (req, res) => {
 
     await Admin.update({
         name, gender, age, birthdate
-    }).then()
+    }, {
+        where: {id}
+    }).then(status => {
+        if (status == 1) {
+            return res.status(200).json({
+                status: 'success',
+                message: 'success edit data',
+            })
+        } else {
+            return res.status(404).json({
+                status: 'error',
+                message: 'data not found'
+            })
+        }
+    }).catch(error => {
+        return res.status(400).json({
+            status: 'error',
+            message: error.message
+        })
+    })
 })
 
 app.delete('/admin/:id', async (req, res) => {
