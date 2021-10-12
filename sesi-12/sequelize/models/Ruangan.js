@@ -29,9 +29,9 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'tb_ruangan'
     })
 
-    Ruangan.associate = models => {
-        Prodi.belongsTo(models.Admin);
-    }
+    // Ruangan.associate = models => {
+    //     Ruangan.belongsTo(models.Admin);
+    // }
 
     return Ruangan;
 }

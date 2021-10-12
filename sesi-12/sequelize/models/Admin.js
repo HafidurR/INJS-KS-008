@@ -37,15 +37,15 @@ module.exports = (sequelize, Datatypes) => {
       tableName: 'Admin'
     })
 
-    Admin.associate = models => {
-      Users.hasOne(models.Ruangan, {
-        foreignKey: {
-          name: 'admin_id'
-        },
-        onDelete: 'cascade',
-        onUpdate: 'cascade'
-      })
-    }
+    // Admin.associate = models => {
+    //   Admin.hasOne(models.Ruangan, {
+    //     foreignKey: {
+    //       name: 'admin_id'
+    //     },
+    //     onDelete: 'cascade',
+    //     onUpdate: 'cascade'
+    //   })
+    // }
 
     return Admin;
 }
