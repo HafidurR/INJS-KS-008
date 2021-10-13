@@ -1,37 +1,24 @@
+'use strict';
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-    const Ruangan = sequelize.define('Ruangan', {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey:true,
-            allowNull: false
-        },
-        adminId: {
-            field: 'admin_id',
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        nama_ruangan: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        createdAt: {
-            field: 'created_at',
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        updatedAt: {
-            field: 'updated_at',
-            type: DataTypes.DATE,
-            allowNull: false
-        }
-    }, {
-        tableName: 'tb_ruangan'
-    })
-
-    // Ruangan.associate = models => {
-    //     Ruangan.belongsTo(models.Admin);
-    // }
-
-    return Ruangan;
-}
+  class Ruangan extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+      Ruangan.hasMany(models.Admin, { foreignKey: "ruangan_id" })
+    }
+  };
+  Ruangan.init({
+    nama_ruangan: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'Ruangan',
+  });
+  return Ruangan;
+};
