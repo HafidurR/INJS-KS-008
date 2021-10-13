@@ -1,13 +1,15 @@
 const express = require('express')
 const app = express()
 const port = 5000
-const { Admin } = require('./models')
+const { Admin, Ruangan } = require('./models')
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true}))
 
 app.get('/admin', (req, res) => {
-    Admin.findAll()
+    Admin.findAll({
+        include: [Ruangan]
+    })
     .then(result => {
         return res.status(200).json({
             status: 'success',
@@ -50,14 +52,15 @@ app.get('/admin/:id', async (req, res) => {
 
 app.post('/admin',  async (req, res) => {
     const {
-        name, gender, age, birthdate
+        name, gender, age, birthdate, ruangan_id
     } = req.body
 
     await Admin.create({
         name,
         gender,
         age,
-        birthdate
+        birthdate,
+        ruangan_id
     }).then(result => {
         return res.status(201).json({
             status: 'success',
@@ -75,11 +78,11 @@ app.post('/admin',  async (req, res) => {
 app.put('/admin/:id', async (req, res) => {
     const id = req.params.id;
     const {
-        name, gender, age, birthdate
+        name, gender, age, birthdate, ruangan_id
     } = req.body;
 
     await Admin.update({
-        name, gender, age, birthdate
+        name, gender, age, birthdate, ruangan_id
     }, {
         where: {id}
     }).then(status => {
@@ -111,6 +114,27 @@ app.delete('/admin/:id', async (req, res) => {
         return res.status(200).json({
             status: 'success',
             message: 'success delete data'
+        })
+    }).catch(error => {
+        return res.status(400).json({
+            status: 'error',
+            message: error.message
+        })
+    })
+})
+
+// ------------------------------------------------------------------------------------------------------------------------------
+
+app.post('/ruangan', async (req, res) => {
+    const { nama_ruangan } = req.body
+
+    await Ruangan.create({
+        nama_ruangan
+    }).then(result => {
+        return res.status(201).json({
+            status: 'success',
+            message: 'success add ruangan',
+            data: result
         })
     }).catch(error => {
         return res.status(400).json({
