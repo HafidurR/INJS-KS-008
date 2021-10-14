@@ -110,11 +110,18 @@ app.delete('/admin/:id', async (req, res) => {
 
     await Admin.destroy({
         where: {id}
-    }).then(result => {
-        return res.status(200).json({
-            status: 'success',
-            message: 'success delete data'
-        })
+    }).then(status => {
+        if (status == 1) {
+            return res.status(200).json({
+                status: 'success',
+                message: 'success delete data',
+            })
+        } else {
+            return res.status(404).json({
+                status: 'error',
+                message: 'data not found'
+            })
+        }
     }).catch(error => {
         return res.status(400).json({
             status: 'error',
