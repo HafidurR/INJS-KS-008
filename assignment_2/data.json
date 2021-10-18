@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "nama": "Kurama",
+    "age": 20,
+    "username": "didik",
+    "password": "123didik"
+  },
+  {
+    "id": 2,
+    "nama": "Kurama",
+    "age": 20,
+    "username": "didik",
+    "password": "123didik"
+  },
+  {
+    "id": 3,
+    "nama": "Didil",
+    "age": 20,
+    "username": "didik",
+    "password": "123didik"
+  },
+  {
+    "id": 4,
+    "nama": "Didik",
+    "age": 20,
+    "username": "didik",
+    "password": "123didik"
+  },
+  {
+    "id": 5,
+    "nama": "Hafid",
+    "age": 20,
+    "username": "hafid",
+    "password": "123hafid"
+  }
+]
