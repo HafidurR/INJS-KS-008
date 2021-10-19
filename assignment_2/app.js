@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const data = require('./data.json')
 const fs = require('fs')
+const verifyToken = require('./middlewares/verifyToken')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
@@ -47,28 +48,8 @@ app.post('/login', (req, res) => {
     }
 })
 
-app.use('/', (req, res, next) => {
-    //return console.log(req.headers.token)
-    try {
-        let decoded = jwt.verify(req.headers.token, 'Rahasia Banget');
-        console.log(decoded)
-        let cek = data.find(result => {
-            return result.username === decoded.username
-        })
-        if (cek) {
-            next()
-        } else {
-            res.status(401).json({
-                message: "User not registered"
-            })
-        }
-    } catch (err) {
-        console.log("Masuk catch dari try")
-        res.status(500).json(err)
-    }
-})
 
-app.get('/admin', (req, res) => {
+app.get('/admin', verifyToken, (req, res) => {
     res.send(data)
 })
 
