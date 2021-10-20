@@ -36,7 +36,7 @@ app.post('/login', (req, res) => {
     })
     
     if (cari) {
-        let token = jwt.sign(cari, 'Rahasia Banget');
+        let token = jwt.sign(cari, 'Rahasia Banget', {expiresIn: '1m'});
         res.status(200).json({
             token: token,
             message: 'Success login',
