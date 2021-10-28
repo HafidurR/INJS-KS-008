@@ -29,7 +29,7 @@ describe("Unit Test of Admin", () => {
 
     })
 
-    test("Login Success !", (done) => {
+    test("Login Success", (done) => {
         request(app)
             .post('/login')
             .send(data[4])

@@ -33,5 +33,26 @@
     "age": 20,
     "username": "hafid",
     "password": "123hafid"
+  },
+  {
+    "id": 6,
+    "nama": "Sam",
+    "age": 20,
+    "username": "hafid",
+    "password": "123hafid"
+  },
+  {
+    "id": 7,
+    "nama": "Sobri",
+    "age": 20,
+    "username": "hafid",
+    "password": "$2b$10$l4cM18wdHtypY5Hy1g9xA.ZEHKr8OeBl5g6nxO3QJKB2aEKI4tUvm"
+  },
+  {
+    "id": 8,
+    "nama": "Sobri",
+    "age": 20,
+    "username": "sobri",
+    "password": "123sobri"
   }
 ]
