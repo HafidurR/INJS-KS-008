@@ -21,11 +21,11 @@ app.post('/register', async (req, res) => {
 
     await data.push({id, nama, age, username, password})
     fs.writeFile('./data.json', JSON.stringify(data, null, 2), () => {
-        console.log('Success register');
+        //console.log('Success register');
     })  
     res.status(201).json({
         status: 'success',
-        message: 'Success register'
+        message: 'register success'
     })
 })
 
@@ -36,7 +36,7 @@ app.post('/login', (req, res) => {
     })
     
     if (cari) {
-        let token = jwt.sign(cari, 'Rahasia Banget', {expiresIn: '1m'});
+        let token = jwt.sign(cari, 'Rahasia Banget', {expiresIn: '1d'});
         res.status(200).json({
             token: token,
             message: 'Success login',
@@ -50,9 +50,15 @@ app.post('/login', (req, res) => {
 
 
 app.get('/admin', verifyToken, (req, res) => {
-    res.send(data)
+    return res.status(200).json({
+        status: 'success',
+        message: 'success get all',
+        data
+    })
 })
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 })
+
+module.exports = app;
