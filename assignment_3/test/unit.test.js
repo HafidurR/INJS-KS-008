@@ -61,7 +61,7 @@ describe("Unit Test of Admin", () => {
     test("GET all Admin", () => {
         return request(app)
             .get('/admin')
-            .set('authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwibmFtYSI6IkhhZmlkIiwiYWdlIjoyMCwidXNlcm5hbWUiOiJoYWZpZCIsInBhc3N3b3JkIjoiMTIzaGFmaWQiLCJpYXQiOjE2MzU4MTMyODksImV4cCI6MTYzNTg5OTY4OX0.tV76t5jDBhx6Fe8mxC3R3sElTU0hcpouWdolIvL-dE8')
+            .set('authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwibmFtYSI6IkhhZmlkIiwiYWdlIjoyMCwidXNlcm5hbWUiOiJoYWZpZCIsInBhc3N3b3JkIjoiMTIzaGFmaWQiLCJpYXQiOjE2MzU5MDQ0MTEsImV4cCI6MTYzNTk5MDgxMX0.n2YUoMk20WHnTNJrfKJHCGveTawsYSvcdN5oQtYH75Q')
             .set('Content-Type', 'application/json')
             .expect(200)
             .then(data => {
